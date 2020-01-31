@@ -28,3 +28,12 @@ Route::get('/home/{sport}', 'PostsController@show');
 Route::get('/posts/new', 'PostsController@new')->name('new');
 
 Route::post('/posts', 'PostsController@store');
+
+Route::get('/home/{sport}/person/{id}', 'PostsController@person')->name('person');
+
+
+
+
+Route::get('/image_input', 'ImageController@getImageInput');
+Route::post('/image_confirm', 'ImageController@postImageConfirm');
+Route::post('/image_complete', 'ImageController@postImageComplete');

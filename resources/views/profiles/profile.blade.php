@@ -1,89 +1,53 @@
 @extends('layouts.app')
 
-
-@section('content') 
-
-
-@if (session('result'))
-<div class="card text-center">
-  {{ session('result') }}
-</div>
-@endif
+@section('content')
 
 
-<div class="Profile"> 
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-md-10">
+            <div class="card">
+            <div class="card-header">プロフィール</div>
+                    <div class="card-body row pt-30">
+                        @csrf
+                        <div class="col-md-3 offset-md-1">
+                          <img src="public/temp/{{ $user->id }}" class="card-img rounded-circle" alt="">  //画像が表示されない DBには入ってる模様
+                          <p class="card-text text-center">{{ $user->name }}</p>
+                        </div>
+                        <div class="col-md-7 mt-5">
+                          <dl class="row justify-content-around text-left">
+                            <dt class="p-0 col-1">名前：</dt>
+                            <dd class="col-5"><h5 class="card-title">{{ $user->name }}</h5></dd>
+                          </dl>
+                             <dl class="row justify-content-around text-left">
+                            <dt class="p-0 col-3">自己紹介：</dt>
+                            <dd class="col-6"><p class="card-text">{{ $user->introduce }}</p></dd>
+                          </dl>
+                          @if(Auth::id() == $user->id)
+                          <dl class="row justify-content-around text-left">
+                            <dt class="p-0 col-3">メールアドレス：</dt>
+                            <dd class="col-6"><p class="card-text">{{ $user->email }}</p></dd>
+                          </dl>
+                          @endif
+                        </div>     
+                    </div>
 
- <div class="container">
-
-  <div class="Profile_contents">
-   <h1 class="h3 loginPage_contents_title">プロフィール</h1>
-
-　 <div class=" mt-4 mb-4 container">
-   <div class="row">
-   <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">
-        {{ $user->name }}
-        </h3>
-      </div>
-      <div class="card-body" id="user_image">
-          <img alt="" class="" src="">
-      </div>
-    </div>
-    <div class="pt-2">
-     
-    </div>
-  </aside>
-
-
-  <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="" class="nav-link ">参加履歴</a></li>
-      <li class="nav-item"><a href="" class="nav-link ">フォロー<span class="badge badge-secondary">0</span></a></li>
-      <li class="nav-item"><a href="" class="nav-link ">フォロワー<span class="badge badge-secondary">0</span></a></li>
-      <li class="nav-item"><a href="" class="nav-link ">メッセージ<span class="badge badge-secondary">0</span></a></li>
-    </ul>
-     <div class="d-inline">プロフィール
-     <a class="btn btn-primary btn-sm mb-1" href="/edit/{{$user->id}}">プロフィールの編集</a>
-  </div>
-<table class="table table-striped">
-  <tbody>
-    <tr>
-      <th>名前</th>
-      <td>{{ $user->name }}</td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td>{{ $user->email }}</td>
-    </tr>
-    <!-- <tr>
-      <th>参加回数</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>自己紹介</th>
-      <td></td>
-    </tr> -->
-  </tbody>
-</table>
-
- 
-  </div>
-  </div>
-</div>
-
-    <div class="text-center">
-        <div class="linkToLogout">
-            <a href="{{ route('logout') }}">ログアウト</a>
+                        @if(Auth::id() == $user->id)
+                          <div class="text-center">
+                            <a class="btn btn-primary btn-sm mb-1" href="/edit/{{$user->id}}">プロフィールの編集</a>
+                          </div>
+                          <div class="text-center">
+                              <div class="linkToLogout">
+                                  <a href="{{ route('logout') }}">ログアウト</a>
+                              </div>
+                          </div>
+                        @endif
+            </div>
         </div>
     </div>
+</div>
 
-  </div> 
- </div> 
-</div> 
-    
-    
+<a href="/home" class="row justify-content-center">戻る</a>
 @endsection
 
 

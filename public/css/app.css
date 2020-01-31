@@ -10876,6 +10876,13 @@ a.text-dark:focus {
   }
 }
 
+.loginPage_image {
+  background-image: url(/images/image3.jpg?84a22b6882370deb72cdcbef05c3232b);
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+}
+
 .loginPage_contents {
   height: 80vh;
   display: flex;
@@ -10886,16 +10893,232 @@ a.text-dark:focus {
 
 .loginPage_contents_title {
   margin-top: 12vh;
+  color: #fff;
+  font-family: bold;
 }
 
 .loginPage_contents_btn {
   display: block;
-  max-width: 400px;
+  max-width: 300px;
   padding: 20px;
   margin: 0 auto;
   border-radius: 30px;
   background: #fd5068;
   color: #fff;
+  margin-top: 12vh;
+}
+
+body {
+  overflow: visible;
+}
+
+main {
+  margin-top: 30px;
+}
+
+.notice,
+.alert {
+  display: none;
+}
+
+.signupPage .header {
+  padding: 20px;
+  text-align: center;
+  background: #55665a52;
+  color: #fff;
+}
+
+.signupPage .userProfileImg {
+  position: relative;
+  margin: 0 auto 10px auto;
+  width: 100px;
+  height: 100px;
+  background: #f85a6f;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupPage .userProfileImg:hover .userProfileImg_description {
+  opacity: 1;
+}
+
+.signupPage .userProfileImg_description {
+  transition: opacity 0.5s;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 5, 5, 0.5);
+  color: #fff;
+}
+
+.signupPage .userProfileImg .fa-camera {
+  color: #fff;
+}
+
+.signupPage .userProfileImg > input {
+  display: none;
+}
+
+.signupPage .userImgPreview {
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+}
+
+.signupPage .userImgPreview.is-active {
+  display: block;
+}
+
+.signupPage .userImgPreview_content {
+  max-width: 100px;
+  margin: 10px;
+  padding: 10px;
+  border: solid thin lightgray;
+  border-radius: 5px;
+}
+
+.signupPage .userImgPreview_text {
+  font-size: 11px;
+}
+
+.signupPage .submitBtn {
+  background: #55665a52;
+  color: #fff;
+  width: 200px;
+  padding: 10px;
+  border-radius: 90px;
+  transition: opacity 0.5s;
+}
+
+.signupPage .submitBtn:hover {
+  opacity: 0.6;
+}
+
+.signupPage .errorMessage {
+  color: #fd5068;
+}
+
+.linkToLogin {
+  margin: 15px 0 15px;
+  text-align: center;
+}
+
+.linkToLogin > a {
+  color: #fd5068;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.profile_contents {
+  padding: 20px;
+  text-align: center;
+  background: #55665a52;
+  color: #fff;
+}
+
+.profile .userImgPreview {
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+}
+
+.profile .userImgPreview.is-active {
+  display: block;
+}
+
+.profile .userImgPreview_content {
+  max-width: 100px;
+  margin: 10px;
+  padding: 10px;
+  border: solid thin lightgray;
+  border-radius: 5px;
+}
+
+.profile .userImgPreview_text {
+  font-size: 11px;
+}
+
+.create_content {
+  border-bottom: 2px solid #bfcad2;
+  background-color: rgba(0, 0, 0, 0.03);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.create_title {
+  font-size: 2rem;
+  color: #34495e;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.upload {
+  display: block;
+  margin-top: 0em;
+}
+
+fieldset {
+  background: transparent;
+  border: 0;
+  border-top: 1px dotted #ccc;
+  padding: 1em 0 0;
+}
+
+dl {
+  line-height: 1.25;
+  margin: 0;
+  display: block;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+          margin-block-end: 1em;
+  -webkit-margin-start: 0px;
+          margin-inline-start: 0px;
+  -webkit-margin-end: 0px;
+          margin-inline-end: 0px;
+}
+
+dl:first-child dt {
+  margin-top: 0;
+}
+
+.upload dd {
+  margin-left: 0;
+}
+
+.body {
+  margin: 0;
+}
+
+.main {
+  padding: 0;
+}
+
+.containter {
+  background-image: url(/images/image4.jpg?4168479a30a397d0e26be0a34b8f5be9);
+  width: 100%;
+  height: 300px;
+  background-size: contain;
+  padding: 100px 0;
+}
+
+.containter h1 {
+  margin: 0px;
+}
+
+.list_item {
+  height: 100px;
+  width: 100px;
 }
 
 body {
@@ -11001,110 +11224,7 @@ body {
   color: #fd5068;
 }
 
-.profile_contents {
-  padding: 20px;
-  text-align: center;
-  background: #55665a52;
-  color: #fff;
-}
-
-.profile .userImgPreview {
-  margin: 0 auto;
-  display: none;
-  text-align: center;
-}
-
-.profile .userImgPreview.is-active {
-  display: block;
-}
-
-.profile .userImgPreview_content {
-  max-width: 100px;
-  margin: 10px;
-  padding: 10px;
-  border: solid thin lightgray;
-  border-radius: 5px;
-}
-
-.profile .userImgPreview_text {
-  font-size: 11px;
-}
-
-.create_content {
-  border-bottom: 2px solid #bfcad2;
-  background-color: #fff;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.create_title {
-  font-size: 2rem;
-  color: #34495e;
-  margin: 0;
-  padding-bottom: 20px;
-}
-
-.upload {
-  display: block;
-  margin-top: 0em;
-}
-
-fieldset {
-  background: transparent;
-  border: 0;
-  border-top: 1px dotted #ccc;
-  padding: 1em 0 0;
-}
-
-dl {
-  line-height: 1.25;
-  margin: 0;
-  display: block;
-  -webkit-margin-before: 1em;
-          margin-block-start: 1em;
-  -webkit-margin-after: 1em;
-          margin-block-end: 1em;
-  -webkit-margin-start: 0px;
-          margin-inline-start: 0px;
-  -webkit-margin-end: 0px;
-          margin-inline-end: 0px;
-}
-
-dl:first-child dt {
-  margin-top: 0;
-}
-
-.upload dd {
-  margin-left: 0;
-}
-
-.body {
-  margin: 0;
-}
-
-.main {
-  padding: 0;
-}
-
-.containter {
-  background: url(http://placehold.jp/1000x700.png) no-repeat 50% 50%/cover;
-}
-
-.containter h1 {
-  margin: 0px;
-}
-
-.list {
-  margin: auto;
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.list_content {
-  display: flex;
-  align-items: stretch;
-  flex-basis: 48%;
+.form-group {
+  margin-bottom: 30px;
 }
 

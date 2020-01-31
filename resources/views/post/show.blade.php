@@ -3,56 +3,49 @@
 
 @section('content') 
 
+
 <div class="containter text-center">
     <h1>プレイヤーを探そう</h1>
-    <form method="POST" action="" target="">
-        <input class="textbox" type="text" name="search" placeholder="プレイヤーを探す">
-        <input type="button" value="検索する">
+    
+    <form method="GET" class="form-group" action="/home/{sport}" target="">
+      <input type="text" name="keyword">
+      <input type="submit" value="検索する">
     </form>
 </div>
 
 
-一つの投稿しか反映されない
-ページネーション
-tinkerで作った物しか反映されていない
+@foreach ($sports as $sport)
+<div class="container">
+  <div class="container_title">
+  @if ($loop->first)
+        <h1 class="text-center">{{ $sport->sport }}</h1>
+  @endif
+  </div>
+  
+  <div class="row justify-content-between">
+    <div class="card col-md-7 my-sm-5" style="max-width: 500px;">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="{{ route('profile',['id'=>$sport->user->id]) }}"><img src="http://placehold.jp/150x150.png" class="card-img rounded-circle" alt=""></a>
+          <div class="card-text text-center">{{$sport->user->name}}</div>
+        </div>
+        <div class="col-md-6 offset-md-2">
+          <div class="card-header"><a href="">{{ $sport->caption }}</a></div>
+          <div class="card-body"><a href="/home/{sport}/person/{{$sport->user->id}}">{{ $sport->place }}</a></div>
+          <div class="card-text"><a href="/home/{sport}/person/{{$sport->user->id}}">{{ $sport->cost }}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 
-<ul class="list">
-                <li class="list_content">
-                    @foreach ($sports as $sport)
-                    <div class="img"><figure><img src="http://placehold.jp/150x150.png" alt=""></figure></div>
-                    <div class="txt col-sm-10">
-                        <h4>{{ $sport->caption }}</h4>
-                        <h4>{{ $sport->place }}</h4>
-                        <h4>{{ $sport->cost }}</h4>
-                     @endforeach
-                    </div>
-                </li>
 
-                <!-- <li class="list_content">
-                
-                </li>
+<div class="row justify-content-center">
+{{ $sports->links() }}
+</div>
 
-                <li class="list_content">
-                    <div class="img"><figure><img src="http://placehold.jp/150x150.png" alt=""></figure></div>
-                    <div class="txt col-sm-10">
-                        <p class="date">投稿日時</p>
-                        <h4>キャプション</h4>
-                        <h4>場所</h4>
-                        <h4>値段</h4>
-                    </div>
-                </li>
-
-                <li class="list_content">
-                    <div class="img"><figure><img src="http://placehold.jp/150x150.png" alt=""></figure></div>
-                    <div class="txt col-sm-10">
-                        <p class="date">投稿日時</p>
-                        <h4>キャプション</h4>
-                        <h4>場所</h4>
-                        <h4>値段</h4>
-                    </div>
-                </li> -->
-</ul>
-
+<a href="/home" class="row justify-content-center">戻る</a>
 
 @endsection
 

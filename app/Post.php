@@ -14,4 +14,12 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function get()
+    {
+        $results = User::all();
+        return $results;
+    }
+
+
 }

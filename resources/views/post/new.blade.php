@@ -14,6 +14,10 @@
             <form class="upload" id="new_post" action="{{ url('posts') }}" method="POST">
            　　 {{ csrf_field() }}
 
+           <div class="form-group row">
+                  <label for="group_name" class="col-sm-3">スポーツ</label>
+                  <input type="text" name="sport" class="form-control col-sm-7" value="">
+                </div>
 
                 <div class="form-group row">
                   <label for="group_name" class="col-sm-3">キャプション</label>
@@ -41,7 +45,7 @@
         </div>
     </div>
 </div>
-
+<a href="/home" class="row justify-content-center">戻る</a>
 @endsection
 
 

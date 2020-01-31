@@ -5,6 +5,10 @@ body {
   overflow: visible;
 }
 
+main{
+  margin-top: 30px;
+}
+
 .notice,
 .alert {
   display: none;
@@ -91,4 +95,8 @@ body {
   & > a {
     color:#fd5068;
   }
+}
+
+.form-group{
+  margin-bottom: 30px;
 }
