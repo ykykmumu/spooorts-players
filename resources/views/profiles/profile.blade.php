@@ -52,6 +52,7 @@
 
 <div>
   <h1>投稿一覧</h1>
+  
 </div>
 
 <a href="/home" class="row justify-content-center">戻る</a>

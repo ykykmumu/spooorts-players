@@ -47,6 +47,17 @@ class User extends Authenticatable
         $results = Post::all();
         return $results;
     }
+
+    public function toUserId()
+    {
+        return $this->hasMany('App\Reaction', 'to_user_id', 'id');
+    }
+
+    public function fromUserId()
+    {
+        return $this->hasMany('App\Reaction', 'from_user_id', 'id');
+    }
+
 }
 
 

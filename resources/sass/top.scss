@@ -12,23 +12,33 @@
             flex-direction: column; 
             justify-content: space-between; 
             text-align: center; 
+           
             &_title { 
-                margin-top: 12vh; 
-                color: #fff;
+                margin-top: 280px; 
+                font-size: 50px;
+                color: rgba(119, 119, 119, 0.986);
                 font-family: bold;
-        } 
+            }
+                &_sentence{
+                    color: rgb(119, 119, 119, 0.986);
+                    font-size: 25px;
+                    line-height: 1.5em;
+                    margin-top: 50px;
+                }
+        
                 
             &_btn { 
                 display: block; 
-                max-width: 300px; 
+                max-width: 200px; 
                 padding: 20px; 
                 margin: 0 auto; 
                 border-radius: 30px; 
-                background: #fd5068; 
+                background: #3490dc; 
                 color: #fff; 
                 margin-top: 12vh;
             } 
-    } 
+        }
+
 }
 // .logo{
 //     width: 100%;

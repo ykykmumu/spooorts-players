@@ -8,7 +8,7 @@
   <div class="loginPage_image">
    <div class="loginPage_contents">
    <h1 class="loginPage_contents_title">Oi!jogador</h1>
-    <h3 class="h3 loginPage_contents_sentens">
+    <h3 class="loginPage_contents_sentence">
       Oi!jogador (オイ！ジョガドール)は<br>
       スポーツ仲間を見つけられる<br>
       サービスです。
@@ -23,7 +23,6 @@
   <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
 </div> 
 
-iconのhrefにauth::checkで行けるのは分かるけどもっと簡単な方法あるか
 @include('commons.icon')
 
     

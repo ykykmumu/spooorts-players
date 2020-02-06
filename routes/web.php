@@ -35,6 +35,11 @@ Route::get('/home/{sport}/person/{id}', 'PostsController@person')->name('person'
 Route::get('/home/{sport}/edit/{id}', 'PostsController@edit')->name('post.edit');
 
 
+Route::get('/like/{to_user_id}/{from_user_id}/{status}', 'ReactionController@create')->name('request');
+
+
+
+
 
 
 Route::get('/image_input', 'ImageController@getImageInput');

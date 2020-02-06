@@ -21,9 +21,12 @@
                     <option value="golf">ゴルフ</option>
                     <option value="baseball">野球</option>
                     <option value="basketball">バスケ</option>
-                    <option value="soccer">サッカー</option>
+                    <option value="soccer">サッカー（フットサル）</option>
                     <option value="rugby">ラグビー</option>
-                    <option value="volleyball">バレー</option>
+                    <option value="volleyball">バレーボール</option>
+                    <option value="badminton">バドミントン</option>
+                    <option value="tabletennis">卓球</option>
+                    <option value="volleyball">バレーボール</option>
                   </select>
                 </div>
 

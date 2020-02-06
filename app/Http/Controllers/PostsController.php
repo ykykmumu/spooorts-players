@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Reaction;
 use Auth;
 use Validator;
 
@@ -23,6 +24,7 @@ class PostsController extends Controller
     {
         $sports = Post::where('sport', $sport)->paginate(8);
         
+
         if($request->has('keyword')) {
             $posts = Post::where('place', 'like', '%'.$request->get('keyword').'%')->paginate(8);
         }else
@@ -30,11 +32,9 @@ class PostsController extends Controller
             $posts = Post::paginate(4);
         }
 
-        return view('post.show', compact('posts','sports'));
-
-        
-        
+        return view('post.show', compact('posts','sports'));   
     }
+
 
     public function new()
     {
@@ -57,7 +57,7 @@ class PostsController extends Controller
         $post->place = $request->place;
         $post->cost = $request->cost;
         $post->comment = $request->comment;
-        
+
         $post->save();
         
         return redirect('/home');
@@ -68,10 +68,12 @@ class PostsController extends Controller
         $posts = Post::all();
         $sports = Post::where('sport', $sport)->first();
         $id = User::find($id);
+        $reactions = Reaction::find(1);
         return view('post.person', [
         'posts' => $posts,
         'sports' => $sports,
         'id' => $id,
+        'reactions' => $reactions,
         ]);
     }
 
