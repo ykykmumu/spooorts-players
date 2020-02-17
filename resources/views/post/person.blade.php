@@ -15,7 +15,7 @@
   </div>
 
 
-  <div>
+<div>
 <div class="container m-auto">
   <div class="">
     <div class="card m-auto" style="max-width: 700px; max-height: 500px;">
