@@ -13,8 +13,8 @@
 
 
 
-Route::get('recruit/login', 'RecruitLoginController@showLoginForm')->name('recruit.login');
-Route::post('recruit/login', 'RecruitLoginController@login');
+Route::get('recruit/login', 'Auth\RecruitLoginController@showLoginForm')->name('recruit.login');
+Route::post('recruit/login', 'Auth\RecruitLoginController@login');
 
 Route::get('/', function () {
     return view('top');
