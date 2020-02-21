@@ -14,7 +14,7 @@ class AddIntroduceToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('introduce')->nullable()->default('よろしくお願いします');  
+            $table->string('introduce')->nullable()->default('よろしくお願いします')->after('password');  
         });
     }
 

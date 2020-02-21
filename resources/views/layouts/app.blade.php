@@ -24,11 +24,11 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             @if (Auth::check())
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar_brand" href="{{ url('/home') }}">
                     {{ config('app.name') }}
                 </a>
             @else
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar_brand" href="{{ url('/') }}">
                     {{ config('app.name') }}
                 </a>
             @endif
@@ -46,6 +46,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('recruit.login') }}">採用担当者用ログイン</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -94,7 +97,7 @@
 </body>
 <footer class="mt-5">
         <nav class="navbar navbar-light bg-light justify-content-center">
-                <div class="navbar-brand m-0">© Oi!jogador, All rights reserved.</div>
+                <div class="navbar_brand m-0">© Players, All rights reserved.</div>
         </nav>
 </footer>
 

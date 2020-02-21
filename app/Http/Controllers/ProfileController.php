@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 use Auth;
 
 class ProfileController extends Controller
@@ -11,7 +12,11 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('profiles.profile', compact('user'));
+        $user_id = Post::where('id', $id)->first();
+        $sports = Post::where('user_id', $id)->paginate(8);
+        
+        return view('profiles.profile', compact('user', 'sports'));
+       
     }
 
 
@@ -23,13 +28,25 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        // $user->img_name = $request->img_name->storeAs('public/temp', $request->user()->id);
+        if ($request->img_name) {
+            $user->img_name = $request->file('img_name')->store('temp', 'public');
+        }
         $user->introduce = $request->introduce;
         $user->save();
         return redirect()->route('profile', ['id' => $user]);
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        if (\Auth::id() == $user->id) {
+            $user->delete();
+        }
+        return back();
+    }
+
 }

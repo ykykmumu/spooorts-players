@@ -10892,20 +10892,35 @@ a.text-dark:focus {
 }
 
 .loginPage_contents_title {
-  margin-top: 12vh;
-  color: #fff;
-  font-family: bold;
+  margin-top: 280px;
+  font-size: 50px;
+  color: rgba(119, 119, 119, 0.986);
+  font-weight: bold;
+}
+
+.loginPage_contents_sentence {
+  color: rgba(119, 119, 119, 0.986);
+  font-size: 25px;
+  line-height: 1.5em;
+  margin-top: 50px;
 }
 
 .loginPage_contents_btn {
   display: block;
-  max-width: 300px;
+  max-width: 200px;
   padding: 20px;
   margin: 0 auto;
   border-radius: 30px;
-  background: #fd5068;
+  background: #3490dc;
   color: #fff;
   margin-top: 12vh;
+}
+
+.navbar_brand {
+  color: #17afcf;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 body {
@@ -10933,7 +10948,7 @@ main {
   margin: 0 auto 10px auto;
   width: 100px;
   height: 100px;
-  background: #f85a6f;
+  background: #17afcf;
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -10955,7 +10970,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(5, 5, 5, 0.5);
+  background: #3490dc;
   color: #fff;
 }
 
@@ -10990,7 +11005,7 @@ main {
 }
 
 .signupPage .submitBtn {
-  background: #55665a52;
+  background: #3490dc;
   color: #fff;
   width: 200px;
   padding: 10px;
@@ -11012,7 +11027,7 @@ main {
 }
 
 .linkToLogin > a {
-  color: #fd5068;
+  color: #17afcf;
 }
 
 .form-group {
@@ -11100,8 +11115,8 @@ dl:first-child dt {
   margin: 0;
 }
 
-.main {
-  padding: 0;
+main {
+  margin-top: 0px;
 }
 
 .containter {
@@ -11109,16 +11124,51 @@ dl:first-child dt {
   width: 100%;
   height: 300px;
   background-size: contain;
-  padding: 100px 0;
+  padding: 70px 0;
 }
 
 .containter h1 {
   margin: 0px;
+  font-weight: bold;
+  color: rgba(119, 119, 119, 0.986);
+}
+
+.list {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.list_content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.list_items {
+  min-height: 100px;
+  width: calc(100% / 3);
+  text-align: center;
 }
 
 .list_item {
+  margin-top: 20px;
+  padding: 10px;
   height: 100px;
   width: 100px;
+}
+
+.list_text {
+  text-align: center;
+  margin: 10px auto 15px;
+  font-size: 18px;
+  padding: 10px 20px;
+  width: 180px;
+  border-radius: 30px;
+  background: #eee;
+  border-style: solid;
+  border-color: #17afcf;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
@@ -11130,30 +11180,23 @@ body {
   display: none;
 }
 
-.signupPage .header {
-  padding: 20px;
-  text-align: center;
-  background: #55665a52;
-  color: #fff;
-}
-
-.signupPage .userProfileImg {
+.userProfileImg {
   position: relative;
   margin: 0 auto 10px auto;
   width: 100px;
   height: 100px;
-  background: #f85a6f;
+  background: #17afcf;
   display: flex;
   cursor: pointer;
   align-items: center;
   justify-content: center;
 }
 
-.signupPage .userProfileImg:hover .userProfileImg_description {
+.userProfileImg:hover .userProfileImg_description {
   opacity: 1;
 }
 
-.signupPage .userProfileImg_description {
+.userProfileImg_description {
   transition: opacity 0.5s;
   opacity: 0;
   width: 100%;
@@ -11164,29 +11207,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(5, 5, 5, 0.5);
+  background: #3490dc;
   color: #fff;
 }
 
-.signupPage .userProfileImg .fa-camera {
+.userProfileImg .fa-camera {
   color: #fff;
 }
 
-.signupPage .userProfileImg > input {
+.userProfileImg > input {
   display: none;
 }
 
-.signupPage .userImgPreview {
+.userImgPreview {
   margin: 0 auto;
   display: none;
   text-align: center;
 }
 
-.signupPage .userImgPreview.is-active {
+.userImgPreview.is-active {
   display: block;
 }
 
-.signupPage .userImgPreview_content {
+.userImgPreview_content {
   max-width: 100px;
   margin: 10px;
   padding: 10px;
@@ -11194,12 +11237,12 @@ body {
   border-radius: 5px;
 }
 
-.signupPage .userImgPreview_text {
+.userImgPreview_text {
   font-size: 11px;
 }
 
-.signupPage .submitBtn {
-  background: #55665a52;
+.submitBtn {
+  background: #3490dc;
   color: #fff;
   width: 200px;
   padding: 10px;
@@ -11207,11 +11250,11 @@ body {
   transition: opacity 0.5s;
 }
 
-.signupPage .submitBtn:hover {
+.submitBtn:hover {
   opacity: 0.6;
 }
 
-.signupPage .errorMessage {
+.errorMessage {
   color: #fd5068;
 }
 
@@ -11221,10 +11264,24 @@ body {
 }
 
 .linkToLogin > a {
-  color: #fd5068;
+  color: #17afcf;
 }
 
 .form-group {
   margin-bottom: 30px;
+}
+
+.container h1 {
+  font-weight: bolder;
+  color: #17afcf;
+}
+
+.search_form {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.search_btn {
+  margin: 0 auto;
 }
 
