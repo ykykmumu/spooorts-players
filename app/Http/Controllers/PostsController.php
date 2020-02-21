@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Reaction;
 use Auth;
 use Validator;
 
@@ -21,20 +22,21 @@ class PostsController extends Controller
 
     public function show($sport, Request $request)
     {
-        $sports = Post::where('sport', $sport)->paginate(8);
+        $sports = Post::where('sport', $sport)->orderBy('id', 'desc')->paginate(8);
         
+
         if($request->has('keyword')) {
-            $posts = Post::where('place', 'like', '%'.$request->get('keyword').'%')->paginate(8);
+            $posts = Post::where('sport', $sport)->whereHas('user', function($query) use($request) {
+                $query->where('name', $request->get('keyword'));
+            })->get();
         }else
         {
-            $posts = Post::paginate(4);
+            $posts = Post::where('sport', $sport)->orderBy('id', 'desc')->paginate(8);
         }
 
-        return view('post.show', compact('posts','sports'));
-
-        
-        
+        return view('post.show', compact('posts','sports'));   
     }
+
 
     public function new()
     {
@@ -56,19 +58,38 @@ class PostsController extends Controller
         $post->user_id = Auth::user()->id;
         $post->place = $request->place;
         $post->cost = $request->cost;
+        $post->comment = $request->comment;
 
         $post->save();
         
         return redirect('/home');
     }
 
-    public function person($sport, $id)
+
+    public function person($sport, $id, $count)
     {
-        $sports = Post::where('sport', $sport)->get();
-        $id = Post::find($id);
+        $user = User::find($id);
+        $sports = Post::where('user_id', $user->id)->where('sport', $sport)->where('id', $count)->first();
+        $posts = Post::all();
+        //$reactions = Reaction::findOrFail($user->id);
         return view('post.person', [
-        'sport' => $sport,
-        'id' => $id,
+            'posts' => $posts,
+            'sports' => $sports,
+            'user' => $user,
+            //'reactions' => $reactions,
         ]);
+    }
+
+
+    public function edit($sport, $id)
+    {
+        $posts = Post::all();
+        $sports = Post::where('sport', $sport)->first();
+        $id = User::find($id);
+        return view('post.postEditer', [
+            'posts' => $posts,
+            'sports' => $sports,
+            'id' => $id,
+            ]);
     }
 }

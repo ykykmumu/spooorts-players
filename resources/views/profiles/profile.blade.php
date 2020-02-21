@@ -11,7 +11,11 @@
                     <div class="card-body row pt-30">
                         @csrf
                         <div class="col-md-3 offset-md-1">
-                          <img src="public/temp/{{ $user->id }}" class="card-img rounded-circle" alt="">  //画像が表示されない DBには入ってる模様
+                        @if(!empty($user->img_name))
+                          <div class='image-wrapper'><img src="{{ asset($user->img_name) }}" class="card-img rounded-circle" alt=""> </div>
+                        @else
+                            <div class='image-wrapper'><img src="{{ Gravatar::src($user->email, 500) }}" class="card-img rounded-circle" alt=""> </div>
+                        @endif
                           <p class="card-text text-center">{{ $user->name }}</p>
                         </div>
                         <div class="col-md-7 mt-5">
@@ -37,17 +41,65 @@
                             <a class="btn btn-primary btn-sm mb-1" href="/edit/{{$user->id}}">プロフィールの編集</a>
                           </div>
                           <div class="text-center">
-                              <div class="linkToLogout">
-                                  <a href="{{ route('logout') }}">ログアウト</a>
+                            <form action="/delete/{{$user->id}}" method="DELETE">
+                            {{ csrf_field() }}
+                              <div class="destroy">
+                                  <button type="submit" class="btn btn-danger">アカウント削除</a>
                               </div>
+                            </form>
                           </div>
-                        @endif
+                        @endif   
             </div>
         </div>
     </div>
 </div>
 
+<div>
+  <h1>投稿一覧</h1>
+  @foreach ($sports as $sport)
+  <div class="col-6">
+    <div class="row justify-content-around pb-5">
+      <div class="card col-md-10 my-sm-2" style="max-width: 550px;">
+        <div class="row">
+          <div class="col-md-4">
+          @if(!empty($sport->user->img_name))
+            <div class='image-wrapper'><img src="{{ asset($sport->user->img_name) }}" class="card-img rounded-circle" alt=""> </div>
+          @else
+            <div class='image-wrapper'><img src="{{ Gravatar::src($sport->user->email, 500) }}" class="card-img rounded-circle" alt=""> </div>
+          @endif
+           
+            <div class="card-text text-center">{{$sport->user->name}}</div> 
+          </div>
+          <div class="col-md-7 offset-md-1">
+            <div class="card-header text-center"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->caption }}</a></div>
+              <div class="row justify-content-around">
+                <div class="card-text"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->place }}</a></div>
+                <div class="card-text"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->cost }}円</a></div>
+              </div>
+            <div class="text-left">
+                自己紹介  
+            </div> 
+            <div class="">
+              <div class="card-text">{{$sport->user->introduce}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endforeach
+</div>
+
+
+
+
+<div class="row justify-content-center">
+{{ $sports->links() }}
+</div>
+</div>
+
 <a href="/home" class="row justify-content-center">戻る</a>
 @endsection
+
 
 
