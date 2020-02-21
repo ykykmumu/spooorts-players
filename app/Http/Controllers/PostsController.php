@@ -71,12 +71,12 @@ class PostsController extends Controller
         $user = User::find($id);
         $sports = Post::where('user_id', $user->id)->where('sport', $sport)->where('id', $count)->first();
         $posts = Post::all();
-        $reactions = Reaction::findorFail($user->id);
+        //$reactions = Reaction::findOrFail($user->id);
         return view('post.person', [
             'posts' => $posts,
             'sports' => $sports,
             'user' => $user,
-            'reactions' => $reactions,
+            //'reactions' => $reactions,
         ]);
     }
 

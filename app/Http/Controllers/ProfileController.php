@@ -28,11 +28,12 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->img_name = $request->file('img_name')->store('temp', 'public');
+        if ($request->img_name) {
+            $user->img_name = $request->file('img_name')->store('temp', 'public');
+        }
         $user->introduce = $request->introduce;
         $user->save();
         return redirect()->route('profile', ['id' => $user]);
