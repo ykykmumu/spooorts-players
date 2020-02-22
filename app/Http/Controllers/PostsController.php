@@ -71,25 +71,49 @@ class PostsController extends Controller
         $user = User::find($id);
         $sports = Post::where('user_id', $user->id)->where('sport', $sport)->where('id', $count)->first();
         $posts = Post::all();
-        //$reactions = Reaction::findOrFail($user->id);
+        // $reactions = Reaction::findorFail($user->id);
+       
         return view('post.person', [
             'posts' => $posts,
             'sports' => $sports,
             'user' => $user,
-            //'reactions' => $reactions,
+            // 'reactions' => $reactions,
         ]);
     }
 
 
-    public function edit($sport, $id)
+    public function edit($sport, $id, $count)
     {
         $posts = Post::all();
-        $sports = Post::where('sport', $sport)->first();
+        $sports = Post::where('sport', $sport)->where('id', $count)->first();
         $id = User::find($id);
         return view('post.postEditer', [
             'posts' => $posts,
             'sports' => $sports,
             'id' => $id,
             ]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $post = Post::find($id);
+        $post->sport = $request->sport;
+        $post->caption = $request->caption;
+        $post->place = $request->place;
+        $post->cost = $request->cost;
+        $post->comment = $request->comment;
+
+        $post->save();
+
+        return redirect()->route('show', ['sport' => $post->sport]);
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->route('show', ['sport' => $post->sport]);
     }
 }

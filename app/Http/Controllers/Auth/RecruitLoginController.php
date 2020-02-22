@@ -37,4 +37,9 @@ class RecruitLoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+	
+	 public function index()
+    {
+        return view('recruit.recruitlogin');
+    }
 }
