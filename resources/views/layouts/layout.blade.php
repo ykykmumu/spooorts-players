@@ -9,9 +9,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title> 
     
     <!-- Styles --> 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> </head> 
+    @if(app('env') == 'production')
+        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @endif
+    </head> 
     <body> 
         @yield('content') 
-        <!-- Scripts --> <script src="{{ asset('js/app.js') }}"></script> 
+        <!-- Scripts -->
+        @if(app('env') == 'production')
+            <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        @else
+            <script src="{{ asset('js/app.js') }}" defer></script>
+        @endif
     </body> 
 </html>
