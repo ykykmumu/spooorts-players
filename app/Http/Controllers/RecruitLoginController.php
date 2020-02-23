@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class RecruitLoginController extends Controller
 {
-    /*
+     /*
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
@@ -37,8 +38,8 @@ class RecruitLoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-	
-	 public function index()
+
+    public function index()
     {
         return view('recruit.recruitlogin');
     }

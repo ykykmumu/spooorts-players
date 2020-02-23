@@ -28,6 +28,7 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -36,6 +37,7 @@ class ProfileController extends Controller
         }
         $user->introduce = $request->introduce;
         $user->save();
+
         return redirect()->route('profile', ['id' => $user]);
     }
 
@@ -46,7 +48,7 @@ class ProfileController extends Controller
         if (\Auth::id() == $user->id) {
             $user->delete();
         }
-        return back();
+        return redirect('/');
     }
 
 }
