@@ -49,11 +49,11 @@
 
         @if(Auth::id() == $user->id)
             <div class="text-center">
-            <a class="btn btn-primary mb-1" href="/home/{{ $sports->sport }}/edit/{{ $user->id }}">投稿編集</a>
+            <a class="btn btn-primary mb-1" href="/home/{{ $sports->sport }}/edit/{{ $user->id }}/{{ $sports->id }}">投稿編集</a>
             </div>
     
             <div class="text-center">
-            <form action="/home/{sport}/delete/{id}">
+            <form action="/home/delete/{{ $sports->id }}" method="POST">
             {{ csrf_field() }}
                 <div class="destroy">
                     <button type="submit" class="btn btn-danger btn-sm">投稿削除</button>
@@ -61,16 +61,7 @@
             </form>
             </div>
         @else
-            <div class="text-center"> 
-            @if($reactions->status === 0)
-                <p>メッセージを送る</p>
-            @elseif($reactions->status === 1)
-                <button class="btn btn-primary btn-sm mb-1" disabled="disabled">リクエスト送信済み</button>
-            @else
-                <a href="/like/{{ $user->id }}/{{ Auth::user()->id }}/{{ $reactions->status }}" class="btn btn-primary btn-sm mb-1">参加リクエスト</a>
-            @endif 
-            </div>
-
+           
            
         @endif 
     </div>   
