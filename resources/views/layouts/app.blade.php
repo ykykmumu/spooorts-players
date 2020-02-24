@@ -10,22 +10,14 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    @if(app('env') == 'production')
-        <script src="{{ secure_asset('js/app.js') }}" defer></script>
-    @else
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    @endif
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    @if(app('env') == 'production')
-        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-    @else
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @endif
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -87,7 +79,7 @@
                                 </div>
                             </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">チャット</a>
+                                    <a class="nav-link" href="{{ route('matching') }}">チャット</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('new') }}">新規投稿</a>
@@ -102,11 +94,13 @@
             @yield('content')
         </main>
     </div>
-</body>
-<footer class="mt-5">
+    <footer class="mt-5">
         <nav class="navbar navbar-light bg-light justify-content-center">
                 <div class="navbar_brand m-0">© Players, All rights reserved.</div>
         </nav>
-</footer>
+    </footer>
+
+</body>
+
 
 </html>
