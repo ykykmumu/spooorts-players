@@ -22,7 +22,7 @@
                                 <p class="userImgPreview_text">画像をアップロード済み</p>
                             </div>
                         </div>
-                    　　 <div class="col-md-9">
+                    　　 <div class="col-md-8">
                           <div class="form-group row">
                               <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
                               <div class="col-md-6">
