@@ -11,7 +11,7 @@
             <div class="card-header create_content">投稿編集</div>
             <div class="card-body">
 
-            <form class="upload" id="new_post" action="/update/{{ $sports->id }}" method="POST">
+            <form class="upload" id="new_post" action="/home/update/{{ $sports->id }}" method="POST">
            　　 {{ csrf_field() }}
     
                 <div class="form-group row">
