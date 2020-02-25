@@ -79,7 +79,7 @@
                                 </div>
                             </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('matching') }}">チャット</a>
+                                    <a class="nav-link" href="#">チャット</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('new') }}">新規投稿</a>
