@@ -70,14 +70,10 @@ class PostsController extends Controller
     {
         $user = User::find($id);
         $user_id = User::find($id)->toUserId()->first();
-        //Userモデルから引数で入ってきた$idの値が$userに代入される、つまり$userは$id
         $sports = Post::where('user_id', $user->id)->where('sport', $sport)->where('id', $count)->first();
-        //user_idカラムが$user(2つ上の$userの値)のidのところでかつ、$sportカラムが引数の$sportの値でかつ$idカラムが$countの一番最初のもの取ってきて
         $posts = Post::all();
     
-        //Q_findで探さないといけない値は何か→reactionはリレーションすることで解決
-        //これもリレーションで解決（上から2行目$user_idの定義）←$idの値はreactionテーブルのidの値をいれたい。この$idは引数の値であるため、今入っているのはto_user_idカラムの値。ブレードで、$reactions->status === 0に指定しても$reactionsの値は被る可能性
-        return view('post.person', [
+            return view('post.person', [
             'posts' => $posts,
             'sports' => $sports,
             'user' => $user,
