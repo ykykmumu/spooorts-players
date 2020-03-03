@@ -18,9 +18,12 @@ class ReactionController extends Controller
 
         if($likeStatus === 'like'){
             $status = Status::LIKE;
-        }else{
+        }elseif($likeStatus === 'DISlike'){
             $status = Status::DISLIKE;
+        }else{
+            $status = Status::REQUEST;
         }
+        
 
         $checkReaction = Reaction::where([
             ['to_user_id', $toUserId],
@@ -40,4 +43,20 @@ class ReactionController extends Controller
 
         return redirect()->to('/home')->with('flash_message', 'リクエストが送信されました');
     }
+
+
+
+    public function update($to_user_id, $from_user_id, Request $request)
+    {
+        $matchingStatus = Reaction::where
+        ([
+        ['to_user_id', $to_user_id],
+        ['from_user_id', $from_user_id]
+        ])->first();
+        $matchingStatus->status = $request->status;
+
+        $matchingStatus->save();
+
+    }
+
 }
