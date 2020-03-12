@@ -61,24 +61,21 @@
             </form>
             </div>
         @else
-            
+        
             <!-- マッチしたユーザにリクエストを送る処理 -->
             <!-- それぞれのstatus状況でボタン表示を変えたい（デフォルト値は2にしたい） -->
             <div class="text-center"> 
-            <form action="/like/{{ $user->id }}/{{ Auth::user()->id }}/1" method="get"> 
-            <!-- アップデート処理のためのformタグ。リクエストが送られたらstatusを2から1、相手が既にこちらにリクエストを送っていたら2から0にしたい -->
-            @if($user_id["status"] === 0)
-                <a href="{{route('chat.show')}}" class="btn btn-primary btn-sm mb-1">メッセージを送る</a>
-              <!-- 　対象のチャットルームへ -->
-            @elseif($user_id["status"] === 1)
-                <button class="btn btn-primary btn-sm mb-1" disabled="disabled">リクエスト送信済み</button>
-            @else
+            @if(!isset($checkReaction))
                 <a href="/like/{{ $user->id }}/{{ Auth::user()->id }}/2" class="btn btn-primary btn-sm mb-1">参加リクエスト</a>
-            @endif 
-            </form>  
+            @elseif($checkReaction->status == 0)
+                <a href="{{route('chat.show')}}" class="btn btn-primary btn-sm mb-1">メッセージを送る</a>
+            @elseif($checkReaction->status == 1)
+                <button class="btn btn-primary btn-sm mb-1" disabled="disabled">リクエスト送信済み</button>
+            
+            @endif
             </div>
-           
-        @endif 
+        @endif
+       
     </div>   
   </div>
 </div>
