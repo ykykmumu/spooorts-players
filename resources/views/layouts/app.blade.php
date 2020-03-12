@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -50,11 +47,11 @@
                                 <a class="nav-link" href="{{ route('recruit.login') }}">採用担当者用ログイン</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">新規登録</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -79,7 +76,7 @@
                                 </div>
                             </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">チャット</a>
+                                    <a class="nav-link" href="{{ route('matching') }}">チャット</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('new') }}">新規投稿</a>
@@ -99,6 +96,9 @@
                 <div class="navbar_brand m-0">© Players, All rights reserved.</div>
         </nav>
     </footer>
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 

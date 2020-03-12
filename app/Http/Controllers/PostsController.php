@@ -69,15 +69,15 @@ class PostsController extends Controller
     public function person($sport, $id, $count)
     {
         $user = User::find($id);
+        $user_id = User::find($id)->toUserId()->first();
         $sports = Post::where('user_id', $user->id)->where('sport', $sport)->where('id', $count)->first();
         $posts = Post::all();
-        // $reactions = Reaction::findorFail($user->id);
-       
-        return view('post.person', [
+    
+            return view('post.person', [
             'posts' => $posts,
             'sports' => $sports,
             'user' => $user,
-            // 'reactions' => $reactions,
+            'user_id' => $user_id,
         ]);
     }
 

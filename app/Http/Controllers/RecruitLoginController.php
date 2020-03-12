@@ -44,3 +44,5 @@ class RecruitLoginController extends Controller
         return view('recruit.recruitlogin');
     }
 }
+
+
