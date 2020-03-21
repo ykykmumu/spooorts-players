@@ -1,59 +1,72 @@
 @extends('layouts.app')
-@section('content')
-<div class="chatPage">
-  <header class="header">
-  <a href="{{route('matching')}}" class="linkToMatching"></a>
-    <div class="chatPartner">
-      <div class="chatPartner_img">
-            @if(!empty($user->img_name))
-              <div class='chat_image'><img src="{{ asset($chat_room_user->img_name) }}" class="img-responsive"　style= "max-width: 100%";> </div>
-            @else
-              <div class='chat_image'><img src="{{ Gravatar::src($chat_room_user->email, 100) }}" class="" style= "max-width: 100%";> </div>
-            @endif
+
+
+@section('content') 
+
+
+<div class="containter text-center">
+    <h1>プレイヤーを探そう</h1>
+@foreach ($posts as $sport)
+@if ($loop->first)
+    <form method="GET" class="form-group search_form" action="/home/{{ $sport->sport }}" target="">
+      <div class="form-group search_form row">
+        <input type="text" name="keyword" class="form-control" placeholder="ユーザを検索する？">
+        <input type="submit" value="検索する" class="btn btn-primary btn-block search_btn" style="width:80px";>
       </div>
-      <div class="chatPartner_name">{{ $chat_room_user -> name }}</div>
+    </form>
+@endif
+@endforeach
+</div>
+
+
+
+<div class="container row m-auto">
+@foreach ($posts as $sport)
+  @if ($loop->first)
+    <div class="container_title col-12">
+      <h1 class="text-center">{{ $sport->sport }}</h1>
     </div>
-  </header>
-  <div class="container">
-    <div class="messagesArea messages">
-    @foreach($chat_messages as $message)
-    <div class="message">
-      @if($message->user_id = Auth::id())
-        <span>{{Auth::user()->name}}</span>
-      @else
-        <span>{{$chat_room_user_name}}</span>
-      @endif
-      <div class="commonMessage">
-        <div>
-        {{$message->message}}
+  @endif
+  <div class="col-6">
+    <div class="row justify-content-around pb-5">
+      <div class="card col-md-10 my-sm-2" style="max-width: 550px;">
+        <div class="row">
+          <div class="col-md-4">
+          @if(!empty($sport->user->img_name))
+            <div class='image-wrapper'><img src="{{ asset($sport->user->img_name) }}" class="card-img rounded-circle img-responsive" style="max-width: 100%; alt=""> </div>
+          @else
+            <div class='image-wrapper'><img src="{{ Gravatar::src($sport->user->email, 500) }}" class="card-img rounded-circle" alt=""></div>
+          @endif
+           
+            <div class="card-text text-center">{{$sport->user->name}}</div> 
+          </div>
+          <div class="col-md-7 offset-md-1">
+            <div class="card-header text-center"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->caption }}</a></div>
+              <div class="row justify-content-around">
+                <div class="card-text"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->place }}</a></div>
+                <div class="card-text"><a href="/home/{{ $sport->sport }}/person/{{$sport->user->id}}/{{ $sport->id }}">{{ $sport->cost }}円</a></div>
+              </div>
+            <div class="text-left">
+                自己紹介  
+            </div> 
+            <div class="">
+              <div class="card-text">{{$sport->user->introduce}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    @endforeach
-    </div>
   </div>
-  <form class="messageInputForm">
-    <div class='container'>
-      <input type="text" data-behavior="chat_message" class="messageInputForm_input" placeholder="メッセージを入力...">
-    </div>
-  </form>
+@endforeach
 </div>
-<script>
-var chat_room_id = {{ $chat_room_id }};
-var user_id = {{ Auth::user()->id }};
-var current_user_name = "{{ Auth::user()->name }}";
-var chat_room_user_name = "{{ $chat_room_user_name }}";
-</script>
 
-<style>
-  .footer{
-    width: 100%;
-    display: block;
-    position: fixed;
-    bottom: 0;
-    line-height: 5vh;
-  }
-</style>
 
+
+
+<div class="row justify-content-center">
+{{ $sports->links() }}
+</div>
+
+<a href="/home" class="row justify-content-center">戻る</a>
 
 @endsection

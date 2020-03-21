@@ -6,5 +6,5 @@ class Status
 {
     const LIKE = 0;
     const DISLIKE = 1;
-    const REQUEST =2;
+    const REQUEST =1;
 }

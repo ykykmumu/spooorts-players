@@ -16,9 +16,9 @@
           <div class="matchingPerson">
             <div class="matchingPerson_img text-center">
               @if(!empty($user->img_name))
-                <div class='chat_image'><img src="{{ asset($user->img_name) }}" class="rounded-circle img-responsive"　style= max-width: 10%;> </div>
+                <div class='chat_image'><img src="{{ asset($user->img_name) }}"> </div>
               @else
-                <div class='chat_image'><img src="{{ Gravatar::src($user->email, 100) }}" class="rounded-circle" style= max-width: 10%;> </div>
+                <div class='chat_image'><img src="{{ Gravatar::src($user->email) }}"> </div>
               @endif
             </div>
             <div class="matchingPerson_name text-center">
@@ -44,24 +44,19 @@
             <div class="matchingPerson">
               <div class="matchingPerson_img text-center">
                 @if(!empty($user->img_name))
-                  <div class='chat_image'><img src="{{ asset($user->img_name) }}" class="rounded-circle img-responsive"> </div>
+                  <div class='chat_image'><img src="{{ asset($user->img_name) }}"> </div>
                 @else
-                  <div class='chat_image'><img src="{{ Gravatar::src($user->email, 100) }}" class="rounded-circle"> </div>
+                  <div class='chat_image'><img src="{{ Gravatar::src($user->email) }}"> </div>
                 @endif
               </div>
               <div class="matchingPerson_name text-center">
                 {{ $user->name }}
               </div>
-        
-              @foreach($user_ids as $user_ids)
-                <form class="text-center" method="get" action="/update/{{ Auth::user()->id }}/{{ $user_ids["from_user_id"] }}/0">
-                <!-- 　この数字を取れるようにしたらルートへ通せる -->
-                  <!-- 押したらstatusをupdateしてリロードしてマッチの方に移動させる -->
+                <form class="text-center" method="get" action="/update/{{ Auth::user()->id }}/{{ $user->id }}/0">
                 @csrf
                   <input name="user_id" type="hidden" value="{{$user->id}}">
                   <button type="submit" class="chatForm_btn">承認する</button>
                 </form> 
-                @endforeach
             </div>
           @endforeach
         </div>

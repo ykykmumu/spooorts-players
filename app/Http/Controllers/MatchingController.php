@@ -49,14 +49,8 @@ class MatchingController extends Controller
         $match_users_count = count($matching_users);
         $request_users_count = count($request_users);
 
-
-        $user_ids = Reaction::where([
-            ['to_user_id', Auth::id()],
-            ['status', '<>', 0]
-            ])->get('from_user_id');
         
-
-        return view('users.index', compact('request_users', 'matching_users', 'user_ids', 'match_users_count', 'request_users_count'));
+        return view('users.index', compact('request_users', 'matching_users', 'match_users_count', 'request_users_count'));
 
     }
     
