@@ -20,17 +20,17 @@
   <div class="">
     <div class="card m-auto" style="max-width: 700px; max-height: 500px;">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 offset-md-1">
           @if(!empty($sports->user->img_name))
-            <div class='image-wrapper'><img src="{{ asset($sports->user->img_name) }}" class="card-img rounded-circle img-responsive"　style= max-width: 100%;> </div>
+            <div class='image-wrapper'><img src="{{ asset($sports->user->img_name) }}"> </div>
           @else
-            <div class='image-wrapper'><img src="{{ Gravatar::src($sports->user->email, 500) }}" class="card-img rounded-circle"> </div>
+            <div class='image-wrapper'><img src="{{ Gravatar::src($sports->user->email) }}"> </div>
           @endif
           　<div class="card-text text-center">{{ $user->introduce }}</div>
         </div>
 
    
-        <div class="col-md-7 offset-md-1">
+        <div class="col-md-6 offset-md-1">
           <div class="card-header text-center">{{ $sports->caption }}</div>
             <div class="row justify-content-around">
                 <div class="card-text">場所:{{ $sports->place }}</div>
