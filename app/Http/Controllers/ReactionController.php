@@ -18,7 +18,7 @@ class ReactionController extends Controller
 
         if($likeStatus === 'like'){
             $status = Status::LIKE;
-        }elseif($likeStatus === 'DISlike'){
+        }elseif($likeStatus === 'Dislike'){
             $status = Status::DISLIKE;
         }else{
             $status = Status::REQUEST;
@@ -48,15 +48,45 @@ class ReactionController extends Controller
 
     public function update($to_user_id, $from_user_id, Request $request)
     {
+        $toUserId = $request->to_user_id;
+        $fromUserId = $request->from_user_id;
+        $likeStatus = $request->reaction;
+
+        // if($likeStatus === 'like'){
+        //     $status = Status::LIKE;
+        // }elseif($likeStatus === 'Dislike'){
+        //     $status = Status::DISLIKE;
+        // }else{
+        //     $status = Status::REQUEST;
+        // }
+        
+
+        $checkReaction = Reaction::where([
+            ['to_user_id', $toUserId],
+            ['from_user_id', $fromUserId]
+        ])->get();
+
+        
+            $reaction = new Reaction();
+
+            $reaction->to_user_id = $fromUserId;
+            $reaction->from_user_id = $toUserId;
+            $reaction->status = 0;
+
+            $reaction->save();
+            
+        
+        
         $matchingStatus = Reaction::where
         ([
         ['to_user_id', $to_user_id],
         ['from_user_id', $from_user_id]
-        ])->first();
-        $matchingStatus->status = $request->status;
+        ])->update(['status' => $request->status]);
 
-        $matchingStatus->save();
+
+        return redirect()->to('/matching');
 
     }
-
+        // アップデートしたらstatus更新してチャットトップページにリダイレクトする流れ
+        // アップデートで数字を変更する処理が必要（２→１、１→０）みたいな
 }
