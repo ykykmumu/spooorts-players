@@ -29,6 +29,7 @@
           width: 80px;
           height: 80px;
           border-radius: 50%;
+          object-fit:cover;
           overflow: hidden;
           & > img {
             width: 100%;
@@ -122,4 +123,16 @@
     }
   }
 
+// index.bladeチャットページのcss
+
+  .chat_image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit:cover;
+    overflow: hidden;
+    & > img {
+      width: 100%;
+    }
+  }
   

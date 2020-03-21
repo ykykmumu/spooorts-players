@@ -48,7 +48,7 @@ Route::post('/home/delete/{id}', 'PostsController@destroy')->name('post.delete')
 
 Route::get('/like/{to_user_id}/{from_user_id}/{status}', 'ReactionController@create')->name('request');
 
-Route::post('/like/{to_user_id}/{from_user_id}/{status}', 'ReactionController@update')->name('request.update');
+Route::get('/update/{to_user_id}/{from_user_id}/{status}', 'ReactionController@update')->name('request.update');
 
 
 
@@ -58,7 +58,4 @@ Route::group(['prefix' => 'chat', 'middleware' => 'auth'], function() {
     Route::post('show', 'ChatController@show')->name('chat.show');
     Route::post('chat', 'ChatController@chat')->name('chat.chat');
 });
-
-
-
 

@@ -65,13 +65,12 @@
             <!-- マッチしたユーザにリクエストを送る処理 -->
             <!-- それぞれのstatus状況でボタン表示を変えたい（デフォルト値は2にしたい） -->
             <div class="text-center"> 
-            @if(!isset($checkReaction))
-                <a href="/like/{{ $user->id }}/{{ Auth::user()->id }}/2" class="btn btn-primary btn-sm mb-1">参加リクエスト</a>
+            @if(is_null($checkReaction))
+                <a href="/like/{{ $user->id }}/{{ Auth::user()->id }}/1" class="btn btn-primary btn-sm mb-1">参加リクエスト</a>
             @elseif($checkReaction->status == 0)
-                <a href="{{route('chat.show')}}" class="btn btn-primary btn-sm mb-1">メッセージを送る</a>
+                <button class="btn btn-danger btn-sm mb-1" disabled="disabled">マッチしました</a>
             @elseif($checkReaction->status == 1)
                 <button class="btn btn-primary btn-sm mb-1" disabled="disabled">リクエスト送信済み</button>
-            
             @endif
             </div>
         @endif

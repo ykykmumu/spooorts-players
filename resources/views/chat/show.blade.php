@@ -4,7 +4,13 @@
   <header class="header">
   <a href="{{route('matching')}}" class="linkToMatching"></a>
     <div class="chatPartner">
-      <div class="chatPartner_img"><img src="/storage/images/{{$chat_room_user -> img_name}}"></div>
+      <div class="chatPartner_img">
+            @if(!empty($user->img_name))
+              <div class='chat_image'><img src="{{ asset($chat_room_user->img_name) }}" class="img-responsive"　style= "max-width: 100%";> </div>
+            @else
+              <div class='chat_image'><img src="{{ Gravatar::src($chat_room_user->email, 100) }}" class="" style= "max-width: 100%";> </div>
+            @endif
+      </div>
       <div class="chatPartner_name">{{ $chat_room_user -> name }}</div>
     </div>
   </header>
@@ -38,4 +44,16 @@ var user_id = {{ Auth::user()->id }};
 var current_user_name = "{{ Auth::user()->name }}";
 var chat_room_user_name = "{{ $chat_room_user_name }}";
 </script>
+
+<style>
+  .footer{
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    line-height: 5vh;
+  }
+</style>
+
+
 @endsection
