@@ -8,7 +8,7 @@
   <div class="container">
     <div class="mt-5">
       <div class="matchingNum">{{ $match_users_count }}人とマッチングしています</div>
-      <h2 class="pageTitle">マッチングした人一覧</h2>
+      <h2 class="pageTitle">マッチング</h2>
       <div class="matchingList">
 				@foreach( $matching_users as $user)
           <div class="matchingPerson">
@@ -28,7 +28,8 @@
           </div>
         @endforeach
 
-        <h2 class="pageTitle">リクエスト一覧</h2>
+        <div class="requestNum">{{ $request_users_count }}人がリクエストしています</div>
+        <h2 class="pageTitle">リクエスト</h2>
       <div class="matchingList">
 				@foreach( $request_users as $user)
           <div class="matchingPerson">
@@ -40,13 +41,12 @@
             @endif
           </div>
             <div class="matchingPerson_name">{{ $user->name }}</div>
-            <button type="submit" class="chatForm_btn">承認する</button>
-            
-            <!-- <form method="POST" action="{{ route('chat.show') }}">
+            <form method="POST" action="">
+              <!-- 押したらstatusをupdateしてリロードしてマッチの方に移動させる -->
             @csrf
               <input name="user_id" type="hidden" value="{{$user->id}}">
-              <button type="submit" class="chatForm_btn">チャットを開く</button>
-            </form>  -->
+              <button type="submit" class="chatForm_btn">承認する</button>
+            </form> 
           </div>
         @endforeach
       </div>
