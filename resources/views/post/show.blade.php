@@ -33,9 +33,9 @@
         <div class="row">
           <div class="col-md-4">
           @if(!empty($sport->user->img_name))
-            <div class='image-wrapper'><img src="{{ asset($sport->user->img_name) }}" class="card-img rounded-circle img-responsive" style="max-width: 100%; alt=""> </div>
+            <div class='image-small'><img src="{{ asset($sport->user->img_name) }}" class="card-img rounded-circle img-responsive" style="max-width: 100%; alt=""> </div>
           @else
-            <div class='image-wrapper'><img src="{{ Gravatar::src($sport->user->email, 500) }}" class="card-img rounded-circle" alt=""></div>
+            <div class='image-small'><img src="{{ Gravatar::src($sport->user->email, 500) }}" class="card-img rounded-circle" alt=""></div>
           @endif
            
             <div class="card-text text-center">{{$sport->user->name}}</div> 
