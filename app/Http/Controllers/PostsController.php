@@ -45,12 +45,23 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),['sport' => 'required', 'caption' => 'required|max:255', 'place' => 'required|max:255', 'cost' => 'required|integer', 'comment' => 'required|max:255']);
+        
 
-        if ($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
+        $request->validate([
+            'sport' => 'required',
+            'caption' => 'required|max:255',
+            'place' => 'required|max:255',
+            'cost' => 'required|integer',
+            'comment' => 'required|max:255',
+        ],
+         [
+                'sport.required' => 'スポーツは必須です。',
+                'caption.required'  => 'キャプションは必須項目です。',
+                'place.required'  => '場所は必須項目です。',
+                'cost.required'  => '値段は必須項目です。',
+                'cost.integer'  => '半角で入力してください。',
+                'comment.required'  => 'コメントは必須項目です。',
+         ]);
 
         $post = new Post;
         $post->sport = $request->sport;
