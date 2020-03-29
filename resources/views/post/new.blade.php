@@ -21,8 +21,8 @@
                 </span> 
                 @enderror
                   <label for="group_name" class="col-sm-3">スポーツ</label>
-                  <select name="sport" class="form-control col-sm-7" value="{{ old('sport') }}">
-                    <option value=""></option>
+                  <select name="sport" class="form-control col-sm-7" value="{{ old('sport') }}" >
+                    <option value="">スポーツを選んでください</option>
                     <option value="golf">ゴルフ</option>
                     <option value="baseball">野球</option>
                     <option value="basketball">バスケ</option>
@@ -36,13 +36,15 @@
                 </div>
 
                 <div class="form-group row  @error('caption')has-error @enderror">
-                @error('caption')
+                
                 <span class="errorMessage col-9 offset-3 text-left">
-                {{ $errors->has('caption') }}
+                @if($errors->has('caption'))
+                {{ $errors->first('caption') }}
+                @endif
                 </span> 
-                @enderror
+           
                   <label for="group_name" class="col-sm-3">キャプション</label>
-                  <input type="text" name="caption" class="form-control col-sm-7"  value="{{ old('caption') }}">
+                  <input type="text" name="caption" class="form-control col-sm-7"  value="{{ old('caption') }}" placeholder="キャプションを入力してください">
                 </div>
 
                 <div class="form-group row @error('place')has-error @enderror">
@@ -52,7 +54,7 @@
                 </span> 
                 @enderror
                   <label for="group_name" class="col-sm-3">場所</label>
-                  <input type="text" name="place" class="form-control col-sm-7" value="{{ old('place') }}">
+                  <input type="text" name="place" class="form-control col-sm-7" value="{{ old('place') }}" placeholder="場所を入力してください">
                 </div>
 
                 <div class="form-group row @error('cost')has-error @enderror">
@@ -62,7 +64,7 @@
                 </span> 
                 @enderror
                   <label for="group_name" class="col-sm-3">値段</label>
-                  <input type="text" name="cost" class="form-control col-sm-7" value="{{ old('cost') }}">
+                  <input type="text" name="cost" class="form-control col-sm-7" value="{{ old('cost') }}" placeholder="値段を入力してください（半角数字のみ）" >
                 </div>
                 
                 <div class="form-group row @error('comment')has-error @enderror">
@@ -72,7 +74,7 @@
                 </span> 
                 @enderror
                   <label for="group_name" class="col-sm-3">コメント</label>
-                  <textarea name="comment" id="" cols="30" rows="10" class="form-control col-sm-7" value="{{ old('comment') }}"></textarea>
+                  <textarea name="comment" id="" cols="30" rows="10" class="form-control col-sm-7" value="{{ old('comment') }}" placeholder="コメントを入力してください"></textarea>
                 </div>
 
                 <div class="text-center">
