@@ -10,7 +10,7 @@
 @if ($loop->first)
     <form method="GET" class="form-group search_form" action="/home/{{ $sport->sport }}" target="">
       <div class="form-group search_form row">
-        <input type="text" name="keyword" class="form-control" placeholder="ユーザを検索する？">
+        <input type="text" name="keyword" class="form-control m-3" placeholder="ユーザを検索する？">
         <input type="submit" value="検索する" class="btn btn-primary btn-block search_btn" style="width:80px";>
       </div>
     </form>
@@ -63,10 +63,11 @@
 
 
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-3">
 {{ $sports->links() }}
 </div>
 
-<a href="/home" class="row justify-content-center">戻る</a>
+
+<input type="btn" value="戻る" class="btn btn-primary btn-block search_btn" onclick="history.back()" style="width:60px";>
 
 @endsection
